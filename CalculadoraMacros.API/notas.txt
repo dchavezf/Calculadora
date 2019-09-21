@@ -1,0 +1,32 @@
+#Instalar Angular
+npm install -g @angular/cli
+
+#Crear aplicacion Angular
+ng new CalculadoraMacros-SPA
+
+#instalar nuget packages Control + Shift+ P
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.SqlServer.Design
+Microsoft.EntityFrameworkCore.Tools.DotNet
+
+          "Microsoft.EntityFrameworkCore": "[2.2.0, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.SqlServer": "[2.2.0, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Tools": "[2.2.0, 2.3.0)",
+
+
+#Comando para revisar la version de .net estamos ocupando
+dotnet --info
+
+#Comando para crear el esqueleto del proyecto .net
+dotnet new webapi -n [NombreDeProyecto]
+
+#Comando para ejecutar el proyecto
+dotnet run
+
+#Comando para actualizar el modelo
+dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Database=HealthCalculator;Trusted_Connection=true" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+#Git
+git init
+Initial Commit
