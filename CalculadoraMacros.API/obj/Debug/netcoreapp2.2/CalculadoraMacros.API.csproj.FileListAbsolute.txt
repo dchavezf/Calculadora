@@ -1,0 +1,14 @@
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\bin\Debug\netcoreapp2.2\CalculadoraMacros.API.deps.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\bin\Debug\netcoreapp2.2\CalculadoraMacros.API.runtimeconfig.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\bin\Debug\netcoreapp2.2\CalculadoraMacros.API.runtimeconfig.dev.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\bin\Debug\netcoreapp2.2\CalculadoraMacros.API.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\bin\Debug\netcoreapp2.2\CalculadoraMacros.API.pdb
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.csprojAssemblyReference.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.csproj.CoreCompileInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.RazorAssemblyInfo.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.RazorAssemblyInfo.cs
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.AssemblyInfoInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.AssemblyInfo.cs
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.RazorTargetAssemblyInfo.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\CalculadoraMacros.API\obj\Debug\netcoreapp2.2\CalculadoraMacros.API.pdb

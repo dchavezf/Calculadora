@@ -6,6 +6,7 @@ namespace CalculadoraMacros.API.Models
     public partial class MeasurementKpiresult
     {
         public int Id { get; set; }
+        public int MeasurementId { get; set; }
         public int MetricId { get; set; }
         public decimal Value { get; set; }
         public int MetricClassificationId { get; set; }
@@ -19,6 +20,7 @@ namespace CalculadoraMacros.API.Models
         public DateTime UpdateDate { get; set; }
         public string StatusFlag { get; set; }
 
+        public virtual Measurement Measurement { get; set; }
         public virtual Metric Metric { get; set; }
         public virtual MetricClassification MetricClassification { get; set; }
     }

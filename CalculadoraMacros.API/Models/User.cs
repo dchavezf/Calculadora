@@ -11,11 +11,14 @@ namespace CalculadoraMacros.API.Models
         }
 
         public int Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
         public DateTime BirthDate { get; set; }
         public int Genre { get; set; }
         public decimal HeightValue { get; set; }
-        public int PhysicalActivityId { get; set; }
         public bool IsMetricSystem { get; set; }
         public string LastUser { get; set; }
         public DateTime LastDate { get; set; }
@@ -24,7 +27,6 @@ namespace CalculadoraMacros.API.Models
         public DateTime UpdateDate { get; set; }
         public string StatusFlag { get; set; }
 
-        public virtual PhysicalActivity PhysicalActivity { get; set; }
         public virtual ICollection<Measurement> Measurement { get; set; }
     }
 }

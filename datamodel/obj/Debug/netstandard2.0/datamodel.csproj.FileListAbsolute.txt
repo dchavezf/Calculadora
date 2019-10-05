@@ -1,0 +1,9 @@
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netstandard2.0\datamodel.deps.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netstandard2.0\datamodel.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netstandard2.0\datamodel.pdb
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.csprojAssemblyReference.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.csproj.CoreCompileInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.AssemblyInfoInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.AssemblyInfo.cs
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netstandard2.0\datamodel.pdb

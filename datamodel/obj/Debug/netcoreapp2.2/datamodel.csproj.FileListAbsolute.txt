@@ -1,0 +1,14 @@
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netcoreapp2.2\datamodel.deps.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netcoreapp2.2\datamodel.runtimeconfig.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netcoreapp2.2\datamodel.runtimeconfig.dev.json
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netcoreapp2.2\datamodel.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\bin\Debug\netcoreapp2.2\datamodel.pdb
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.csprojAssemblyReference.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.csproj.CoreCompileInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.AssemblyInfoInputs.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.AssemblyInfo.cs
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.dll
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.pdb
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.RazorAssemblyInfo.cache
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.RazorAssemblyInfo.cs
+C:\Users\MX075770\OneDrive - 3M\Documents\temporal\Daniel\Calculadora\datamodel\obj\Debug\netcoreapp2.2\datamodel.RazorTargetAssemblyInfo.cache

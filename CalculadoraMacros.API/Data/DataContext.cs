@@ -1,16 +1,17 @@
 ﻿using System;
+using CalculadoraMacros.API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace CalculadoraMacros.API.Models
+namespace CalculadoraMacros.API.Data
 {
-    public partial class HealthCalculatorContext : DbContext
+    public partial class DataContext : DbContext
     {
-        public HealthCalculatorContext()
+        public DataContext()
         {
         }
 
-        public HealthCalculatorContext(DbContextOptions<HealthCalculatorContext> options)
+        public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
         }
@@ -20,31 +21,24 @@ namespace CalculadoraMacros.API.Models
         public virtual DbSet<Kpicolor> Kpicolor { get; set; }
         public virtual DbSet<MeasureDeviceType> MeasureDeviceType { get; set; }
         public virtual DbSet<Measurement> Measurement { get; set; }
+        public virtual DbSet<MeasurementInput> MeasurementInput { get; set; }
         public virtual DbSet<MeasurementKpiresult> MeasurementKpiresult { get; set; }
         public virtual DbSet<Metric> Metric { get; set; }
         public virtual DbSet<MetricClass> MetricClass { get; set; }
         public virtual DbSet<MetricClassification> MetricClassification { get; set; }
         public virtual DbSet<MetricClassificationFactor> MetricClassificationFactor { get; set; }
         public virtual DbSet<MetricTable> MetricTable { get; set; }
-        public virtual DbSet<PhysicalActivity> PhysicalActivity { get; set; }
         public virtual DbSet<UnitOfMeasure> UnitOfMeasure { get; set; }
         public virtual DbSet<User> User { get; set; }
-
-/*        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                DbContextOptionsBuilder dbContextOptionsBuilder = optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Database=HealthCalculator;Trusted_Connection=true");
-            }
-        }
- */
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity<Calculator>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -88,6 +82,10 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<CalculatorConfig>(entity =>
             {
+                entity.HasIndex(e => new { e.CalculatorId, e.MetricId })
+                    .HasName("IX_CalculatorConfig_Code")
+                    .IsUnique();
+
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -135,6 +133,9 @@ namespace CalculadoraMacros.API.Models
             {
                 entity.ToTable("KPIColor");
 
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -173,6 +174,9 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<MeasureDeviceType>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -216,6 +220,10 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<Measurement>(entity =>
             {
+                entity.HasIndex(e => new { e.UserId, e.Date })
+                    .HasName("IX_Measurement_Code")
+                    .IsUnique();
+
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -267,9 +275,64 @@ namespace CalculadoraMacros.API.Models
                     .HasConstraintName("FK_Measurement_User");
             });
 
+            modelBuilder.Entity<MeasurementInput>(entity =>
+            {
+                entity.HasIndex(e => new { e.MeasurementId, e.MetricId })
+                    .HasName("IX_MeasurementInput_Code")
+                    .IsUnique();
+
+                entity.Property(e => e.CreationDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.LastDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.LastMachine)
+                    .IsRequired()
+                    .HasMaxLength(25)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("(rtrim(host_name()))");
+
+                entity.Property(e => e.LastUser)
+                    .IsRequired()
+                    .HasMaxLength(25)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("(rtrim(suser_sname()))");
+
+                entity.Property(e => e.StatusFlag)
+                    .IsRequired()
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("('A')");
+
+                entity.Property(e => e.UpdateDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Value).HasColumnType("money");
+
+                entity.HasOne(d => d.Measurement)
+                    .WithMany(p => p.MeasurementInput)
+                    .HasForeignKey(d => d.MeasurementId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MeasurementInput_Measurement");
+
+                entity.HasOne(d => d.Metric)
+                    .WithMany(p => p.MeasurementInput)
+                    .HasForeignKey(d => d.MetricId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MeasurementInput_Metric");
+            });
+
             modelBuilder.Entity<MeasurementKpiresult>(entity =>
             {
                 entity.ToTable("MeasurementKPIResult");
+
+                entity.HasIndex(e => new { e.MeasurementId, e.MetricId })
+                    .HasName("IX_MeasurementKPIResult_Code")
+                    .IsUnique();
 
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
@@ -309,6 +372,12 @@ namespace CalculadoraMacros.API.Models
 
                 entity.Property(e => e.Value).HasColumnType("money");
 
+                entity.HasOne(d => d.Measurement)
+                    .WithMany(p => p.MeasurementKpiresult)
+                    .HasForeignKey(d => d.MeasurementId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_MeasurementKPIResult_Measurement");
+
                 entity.HasOne(d => d.MetricClassification)
                     .WithMany(p => p.MeasurementKpiresult)
                     .HasForeignKey(d => d.MetricClassificationId)
@@ -324,6 +393,9 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<Metric>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -348,6 +420,10 @@ namespace CalculadoraMacros.API.Models
                     .HasMaxLength(25)
                     .IsUnicode(false)
                     .HasDefaultValueSql("(rtrim(suser_sname()))");
+
+                entity.Property(e => e.MaxValue).HasColumnType("money");
+
+                entity.Property(e => e.MinValue).HasColumnType("money");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -379,6 +455,9 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<MetricClass>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -422,6 +501,9 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<MetricClassification>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -477,6 +559,10 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<MetricClassificationFactor>(entity =>
             {
+                entity.HasIndex(e => new { e.MetricClassificationId, e.Name })
+                    .HasName("IX_MetricClassificationFactor_Code")
+                    .IsUnique();
+
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -523,6 +609,10 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<MetricTable>(entity =>
             {
+                entity.HasIndex(e => new { e.MetricId, e.MetricClassificationId })
+                    .HasName("IX_MetricTable_Code")
+                    .IsUnique();
+
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -570,61 +660,11 @@ namespace CalculadoraMacros.API.Models
                     .HasConstraintName("FK_MetricTable_Metric");
             });
 
-            modelBuilder.Entity<PhysicalActivity>(entity =>
-            {
-                entity.Property(e => e.Code)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CreationDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.Factor).HasColumnType("money");
-
-                entity.Property(e => e.LastDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.LastMachine)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false)
-                    .HasDefaultValueSql("(rtrim(host_name()))");
-
-                entity.Property(e => e.LastUser)
-                    .IsRequired()
-                    .HasMaxLength(25)
-                    .IsUnicode(false)
-                    .HasDefaultValueSql("(rtrim(suser_sname()))");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ProteinPerKgFactor).HasColumnType("money");
-
-                entity.Property(e => e.StatusFlag)
-                    .IsRequired()
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .HasDefaultValueSql("('A')");
-
-                entity.Property(e => e.UpdateDate)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(getdate())");
-
-                entity.HasOne(d => d.NextPhysicalActivity)
-                    .WithMany(p => p.InverseNextPhysicalActivity)
-                    .HasForeignKey(d => d.NextPhysicalActivityId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PhysicalActivity_PhysicalActivity");
-            });
-
             modelBuilder.Entity<UnitOfMeasure>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.Code)
                     .IsRequired()
                     .HasMaxLength(20)
@@ -682,11 +722,25 @@ namespace CalculadoraMacros.API.Models
 
             modelBuilder.Entity<User>(entity =>
             {
+                entity.HasIndex(e => e.Code)
+                    .IsUnique();
+
                 entity.Property(e => e.BirthDate).HasColumnType("date");
+
+                entity.Property(e => e.Code)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreationDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("EMail")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.HeightValue).HasColumnType("money");
 
@@ -711,6 +765,14 @@ namespace CalculadoraMacros.API.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.PasswordHash)
+                    .IsRequired()
+                    .HasMaxLength(500);
+
+                entity.Property(e => e.PasswordSalt)
+                    .IsRequired()
+                    .HasMaxLength(500);
+
                 entity.Property(e => e.StatusFlag)
                     .IsRequired()
                     .HasMaxLength(1)
@@ -720,12 +782,6 @@ namespace CalculadoraMacros.API.Models
                 entity.Property(e => e.UpdateDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
-
-                entity.HasOne(d => d.PhysicalActivity)
-                    .WithMany(p => p.User)
-                    .HasForeignKey(d => d.PhysicalActivityId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Users_PhysicalActivity");
             });
         }
     }

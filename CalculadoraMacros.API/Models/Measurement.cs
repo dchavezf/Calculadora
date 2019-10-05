@@ -5,6 +5,12 @@ namespace CalculadoraMacros.API.Models
 {
     public partial class Measurement
     {
+        public Measurement()
+        {
+            MeasurementInput = new HashSet<MeasurementInput>();
+            MeasurementKpiresult = new HashSet<MeasurementKpiresult>();
+        }
+
         public int Id { get; set; }
         public int UserId { get; set; }
         public DateTime Date { get; set; }
@@ -21,5 +27,7 @@ namespace CalculadoraMacros.API.Models
         public virtual Calculator Calculator { get; set; }
         public virtual MeasureDeviceType MeasureDeviceType { get; set; }
         public virtual User User { get; set; }
+        public virtual ICollection<MeasurementInput> MeasurementInput { get; set; }
+        public virtual ICollection<MeasurementKpiresult> MeasurementKpiresult { get; set; }
     }
 }

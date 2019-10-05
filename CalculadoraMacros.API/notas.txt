@@ -25,8 +25,9 @@ dotnet new webapi -n [NombreDeProyecto]
 dotnet run
 
 #Comando para actualizar el modelo
-dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Database=HealthCalculator;Trusted_Connection=true" Microsoft.EntityFrameworkCore.SqlServer -o Models
+dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HealthCalculator" Microsoft.EntityFrameworkCore.SqlServer -o Models
 
 #Git
 git init
 Initial Commit
+git remote add origin https://github.com/dchavezf/Calculadora.git
