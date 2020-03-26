@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj",
+  "FilePath": "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\datamodel\\datamodel.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2956,9 +2956,9 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 703
+    "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "CalculadoraMacros.API",
+  "RootNamespace": "datamodel",
   "Documents": [],
   "SerializationFormat": "0.2"
 }
