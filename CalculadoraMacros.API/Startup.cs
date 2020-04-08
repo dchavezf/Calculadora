@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using CalculadoraMacros.API.Data;
 using CalculadoraMacros.API.Helpers;
 using CalculadoraMacros.API.Models;
@@ -46,7 +47,7 @@ namespace CalculadoraMacros.API
                     opt.SerializerSettings.ReferenceLoopHandling = 
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
-            services.AddCors();
+            services.AddCors(); 
             services.AddAutoMapper(typeof(CalcRepository).Assembly);
 //TODO: Crear metodo de Seed Database
 //            services.AddTransient<Seed>();

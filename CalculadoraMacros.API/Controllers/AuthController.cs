@@ -4,9 +4,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using DatingApp.API.Data;
-using DatingApp.API.Dtos;
-using DatingApp.API.Models;
+using CalculadoraMacros.API.Data;
+using CalculadoraMacros.API.Dtos;
+using CalculadoraMacros.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -28,26 +28,29 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register(UserForFunnelDto userForFunnelDto)
         {
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+            userForFunnelDto.Code = userForFunnelDto.Email.ToLower();
 
-            if (await _repo.UserExists(userForRegisterDto.Username))
-                return BadRequest("Username already exists");
+            if (await _repo.UserExists(userForFunnelDto.Code))
+                return BadRequest("El usuario ya existe");
 
-            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+            var userToCreate = _mapper.Map<User>(userForFunnelDto);
+            userForFunnelDto.Password="R@ndomPwd2020";
 
-            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
+            var createdUser = await _repo.Register(userToCreate, userForFunnelDto.Password);
 
-            var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);
-
-            return CreatedAtRoute("GetUser", new {controller = "Users", id = createdUser.Id}, userToReturn);
+            return CreatedAtRoute(
+                "GetUser", 
+                new {controller = "Calculator", id = createdUser.Id}
+     
+            );
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-            var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+            var userFromRepo = await _repo.Login(userForLoginDto.Code.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
                 return Unauthorized();
@@ -55,7 +58,7 @@ namespace DatingApp.API.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+                new Claim(ClaimTypes.Name, userFromRepo.Code )
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
@@ -74,7 +77,7 @@ namespace DatingApp.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            var user = _mapper.Map<UserForListDto>(userFromRepo);
+            var user = _mapper.Map<UserForDisplayDto>(userFromRepo);
 
             return Ok(new
             {
