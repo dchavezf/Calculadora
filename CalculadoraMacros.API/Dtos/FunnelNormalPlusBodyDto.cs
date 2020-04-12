@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CalculadoraMacros.API.Dtos
 {
-    public class Funnel2Dto
+    public class FunnelNormalPlusBodyDto
     {
         [Required]
         public int Genre { get; set; }
@@ -14,14 +14,14 @@ namespace CalculadoraMacros.API.Dtos
         [Required]
         public int Age {get; set;}   
         [Required]
-        public float HeightValue {get; set;}
+        public decimal HeightValue {get; set;}
         [Required]
-        public float WeightValue {get; set;}
+        public decimal WeightValue {get; set;}
         [Required]
-        public float NeckValue {get; set;}
+        public decimal NeckValue {get; set;}
         [Required]
-        public float WaistValue {get; set;}
+        public decimal WaistValue {get; set;}
         [Required]
-        public float HipsValue {get; set;}
+        public decimal HipsValue {get; set;}
     }
 }

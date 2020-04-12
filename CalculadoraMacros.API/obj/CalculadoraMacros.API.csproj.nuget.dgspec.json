@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj": {}
+    "C:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj": {
+    "C:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj",
+        "projectUniqueName": "C:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj",
         "projectName": "CalculadoraMacros.API",
-        "projectPath": "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj",
+        "projectPath": "C:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\CalculadoraMacros.API.csproj",
         "packagesPath": "C:\\Users\\MX075770\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\obj\\",
+        "outputPath": "C:\\Users\\MX075770\\OneDrive - 3M\\Documents\\temporal\\Daniel\\Calculadora\\CalculadoraMacros.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -28,17 +28,17 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForFunnelDto userForFunnelDto)
+        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-            userForFunnelDto.Code = userForFunnelDto.Email.ToLower();
+            userForRegisterDto.Code = userForRegisterDto.Email.ToLower();
 
-            if (await _repo.UserExists(userForFunnelDto.Code))
+            if (await _repo.UserExists(userForRegisterDto.Code))
                 return BadRequest("El usuario ya existe");
 
-            var userToCreate = _mapper.Map<User>(userForFunnelDto);
-            userForFunnelDto.Password="R@ndomPwd2020";
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+            userForRegisterDto.Password="R@ndomPwd2020";
 
-            var createdUser = await _repo.Register(userToCreate, userForFunnelDto.Password);
+            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
             return CreatedAtRoute(
                 "GetUser", 

@@ -12,6 +12,6 @@ namespace CalculadoraMacros.API.Data
         void Delete<T>(T entity) where T: class;
         Task<bool> SaveAll();
         Task<User> GetUser(int id);
-        Task<Measurement> CalculateMacros(UserForFunnelDto userForFunnelDto);
+        Task<Measurement> CalculateMacros(FunnelMasterDto funnel);
     }
 }

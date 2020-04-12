@@ -358,7 +358,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
                 entity.Property(e => e.ObjectiveValue).HasColumnType("money");
 
-                entity.Property(e => e.PcObjectiveValue).HasColumnType("money");
+                entity.Property(e => e.KpiObjectiveValue).HasColumnType("money");
 
                 entity.Property(e => e.StatusFlag)
                     .IsRequired()
@@ -371,6 +371,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
                     .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.Value).HasColumnType("money");
+                entity.Property(e => e.KpiValue).HasColumnType("money");
+                entity.Property(e => e.KpiGapValue).HasColumnType("money");
 
                 entity.HasOne(d => d.Measurement)
                     .WithMany(p => p.MeasurementKpiresult)

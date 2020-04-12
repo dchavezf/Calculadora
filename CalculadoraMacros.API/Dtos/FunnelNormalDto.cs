@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CalculadoraMacros.API.Dtos
 {
-    public class Funnel1Dto
+    public class FunnelNormalDto
     {
         [Required]
         public int Genre { get; set; }
@@ -22,10 +22,10 @@ namespace CalculadoraMacros.API.Dtos
         [Required]
         public int Age {get; set;}   
         [Required]
-        public float HeightValue {get; set;}
+        public decimal HeightValue {get; set;}
         [Required]
-        public float WeightValue {get; set;}
+        public decimal WeightValue {get; set;}
         [Required]
-        public float WeightObjetive {get; set;}
+        public decimal WeightObjetive {get; set;}
     }
 }

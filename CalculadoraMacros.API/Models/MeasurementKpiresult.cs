@@ -8,11 +8,13 @@ namespace CalculadoraMacros.API.Models
         public int Id { get; set; }
         public int MeasurementId { get; set; }
         public int MetricId { get; set; }
+        public decimal KpiValue { get; set; }
         public decimal Value { get; set; }
-        public int MetricClassificationId { get; set; }
-        public decimal PcObjectiveValue { get; set; }
+        public decimal KpiObjectiveValue { get; set; }
         public decimal ObjectiveValue { get; set; }
         public decimal GapValue { get; set; }
+        public decimal KpiGapValue { get; set; }
+        public int MetricClassificationId { get; set; }
         public string LastUser { get; set; }
         public DateTime LastDate { get; set; }
         public string LastMachine { get; set; }

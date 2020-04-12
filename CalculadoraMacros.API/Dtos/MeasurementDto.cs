@@ -8,9 +8,7 @@ namespace CalculadoraMacros.API.Dtos
 {
     public class MeasurementDto
     {
-        public int Id { get; set; } 
-        public DateTime MeasurementDate { get; set; } 
-        public bool IsMetricSystem { get; set; }
+ 
         public IList<MeasurementValueDto> MeasurementValues { get; set; }  
         public IList<MeasurementKPIDto> MeasurementKPIDto { get; set; }    
     }
